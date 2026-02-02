@@ -3,11 +3,13 @@
 ## Dodawanie domen i kont
 
 ### Metoda 1: Skrypt setup (zalecane)
+Adres i hasło podawaj w cudzysłowach (obowiązkowo przy znakach specjalnych: spacja, $, !, #, itd.).
+
 Po uruchomieniu kontenera:
-  docker exec -it poczta-mailserver setup email add user@domena.pl haslo
+  docker exec -it poczta-mailserver setup email add 'user@domena.pl' 'haslo'
 
 Dla wielu domen powtarzaj dla każdej domeny:
-  docker exec -it poczta-mailserver setup email add info@domena2.pl haslo
+  docker exec -it poczta-mailserver setup email add 'info@domena2.pl' 'hasło_ze_znakami!'
 
 Lista kont:
   docker exec poczta-mailserver setup email list

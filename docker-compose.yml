@@ -29,7 +29,7 @@ services:
       - .env
     networks:
       - poczta-network
-      - proxy-network
+      # - proxy-network
     cap_add:
       - NET_ADMIN
 
@@ -48,12 +48,12 @@ services:
       - ./data/roundcube:/var/roundcube/temp
     networks:
       - poczta-network
-      - proxy-network
+      # - proxy-network
     depends_on:
       - mailserver
 
 networks:
   poczta-network:
     driver: bridge
-  proxy-network:
-    external: true
+  # proxy-network:
+  #   external: true

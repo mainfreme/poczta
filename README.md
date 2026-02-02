@@ -92,17 +92,19 @@ Bez poprawnego MX i A serwer nie będzie poprawnie odbierał ani rozpoznawany pr
 
 ### 7. Dodawanie kont pocztowych (wiele domen)
 
-Po uruchomieniu kontenera dodaj konta przez skrypt setup:
+Po uruchomieniu kontenera dodaj konta przez skrypt setup. **Adres e-mail i hasło podawaj w cudzysłowach** – inaczej znaki specjalne (spacja, `$`, `!`, `#`, `&`, `*` itd.) zostaną zinterpretowane przez powłokę i polecenie może się nie udać lub ustawić złe hasło.
 
 ```bash
-docker exec -it poczta-mailserver setup email add user@domena.pl twoje_haslo
+docker exec -it poczta-mailserver setup email add 'user@domena.pl' 'twoje_haslo'
 ```
 
 Dla kolejnych domen powtarzaj z innymi adresami, np.:
 
 ```bash
-docker exec -it poczta-mailserver setup email add info@inna-domena.pl haslo
+docker exec -it poczta-mailserver setup email add 'info@inna-domena.pl' 'hasło_z_znakami!@#'
 ```
+
+**Uwaga:** Używaj **pojedynczych** cudzysłowów `'...'` – wtedy cały ciąg jest przekazywany literalnie (np. `$` nie jest rozwijane). W cudzysłowach podwójnych `"..."` zmienne jak `$VAR` są nadal interpretowane.
 
 Lista kont:
 
