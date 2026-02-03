@@ -20,7 +20,7 @@ services:
       - ENABLE_SPAMASSASSIN=0
       - ENABLE_CLAMAV=0
       - ENABLE_FAIL2BAN=0
-      - ENABLE_QUOTAS=1
+      - ENABLE_QUOTAS=0
       - OVERRIDE_HOSTNAME=${MAIL_HOSTNAME:-mail}
       - SSL_TYPE=${SSL_TYPE:-manual}
       - PERMIT_DOCKER=network
@@ -29,7 +29,7 @@ services:
       - .env
     networks:
       - poczta-network
-      # - proxy-network
+      - proxy-network
     cap_add:
       - NET_ADMIN
 
@@ -48,12 +48,12 @@ services:
       - ./data/roundcube:/var/roundcube/temp
     networks:
       - poczta-network
-      # - proxy-network
+      - proxy-network
     depends_on:
       - mailserver
 
 networks:
   poczta-network:
     driver: bridge
-  # proxy-network:
-  #   external: true
+  proxy-network:
+    external: true
